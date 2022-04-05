@@ -1,5 +1,5 @@
-//let computerSelection;
-//let playerSelection;
+let playerScore = 0;
+let computerScore = 0;
 
 // computer generates a random number between 1 and 3
 let compNum = Math.floor(Math.random() * 3) + 1;
@@ -43,9 +43,7 @@ function playerPlay () {
 }
 
 function playRound(playerSelection, computerSelection) {
-    let playerScore = 0;
-    let computerScore = 0;
-    
+   
     // computer wins
     if (playerSelection == 'rock' && computerSelection == 'paper'){
         computerScore++;
@@ -71,10 +69,23 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-const playerSelection = playerPlay();
-const computerSelection = computerPlay(compNum);
-console.log(playRound(playerSelection, computerSelection));
 
+// function to play 5 rounds of the game;
 function game () {
 
+    for (let i = 0; i < 5; i++){
+        const playerSelection = playerPlay();
+        const computerSelection = computerPlay(compNum);
+        console.log(playRound(playerSelection, computerSelection));
+
+        console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
+    }
+
+    if (playerScore > computerScore){
+        alert('Congratulations! You win')
+    } else if (playerScore < computerScore) {
+        alert('Too Bad! You lose')
+    } else {
+        alert("It's a draw!")
+    }
 }
