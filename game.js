@@ -67,6 +67,11 @@ function playRound(playerSelection, computerSelection) {
         playerScore++;
         return "You Win! Scissors beats Paper";
     }
+
+    //draw
+    if (playerSelection === computerSelection){
+        return `You picked ${playerSelection} and computer picked ${computerSelection}`;
+    }
 }
 
 
@@ -76,7 +81,7 @@ function game () {
     for (let i = 0; i < 5; i++){
         const playerSelection = playerPlay();
         const computerSelection = computerPlay(compNum);
-        console.log(playRound(playerSelection, computerSelection));
+        //console.log(playRound(playerSelection, computerSelection));
 
         console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
     }
@@ -89,3 +94,5 @@ function game () {
         alert("It's a draw!")
     }
 }
+
+game();
