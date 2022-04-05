@@ -21,11 +21,9 @@ function computerPlay (num) {
             selection = "There's been a problem";
     }
 
-    console.log(selection);
     return selection;
 }
 
-//computerPlay(compNum);
 
 function playerPlay () {
     selection = prompt("Rock, Paper or Scissors: ");
@@ -81,7 +79,7 @@ function game () {
     for (let i = 0; i < 5; i++){
         const playerSelection = playerPlay();
         const computerSelection = computerPlay(compNum);
-        //console.log(playRound(playerSelection, computerSelection));
+        console.log(playRound(playerSelection, computerSelection));
 
         console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
     }
