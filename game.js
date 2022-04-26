@@ -61,23 +61,31 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+function reset(){
+    playerScore = 0;
+    computerScore = 0;
+}
 
-// function to play 5 rounds of the game;
+// function to play the game until either the player or computer gets to 5
 function game(event){
         let playerSelection = playerPlay(event);
         let compSelection = computerPlay(Math.floor(Math.random() * 3) + 1);
     
         console.log(playRound(playerSelection, compSelection));
         console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
+        score.textContent = `Player Score is ${playerScore} and Computer Score is ${computerScore}.`
+        result.textContent = " ";
+
         if (playerScore === 5 || computerScore === 5) {
-        if (playerScore > computerScore){
-            alert('Congratulations! You win')
-        } else if (playerScore < computerScore) {
-            alert('Too Bad! You lose')
-        }
+            if (playerScore > computerScore){
+                //alert('Congratulations! You win')
+                result.textContent = 'Congratulations! You win';
+            }  else if (playerScore < computerScore) {
+                //alert('Too Bad! You lose')
+                result.textContent = 'Too Bad! You lose';
+            }
         
-        playerScore = 0;
-        computerScore = 0; 
+            reset();
     }
 
 };
