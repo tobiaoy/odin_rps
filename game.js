@@ -55,7 +55,7 @@ function playRound(playerSelection, computerSelection) {
 
     //draw
     if (playerSelection === computerSelection){
-        return `You picked ${playerSelection} and computer picked ${computerSelection}`;
+        return `You picked ${playerSelection} and computer also picked ${computerSelection}`;
     }
 }
 
