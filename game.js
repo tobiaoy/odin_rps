@@ -2,7 +2,7 @@ let playerScore = 0;
 let computerScore = 0;
 
 // computer generates a random number between 1 and 3
-let compNum = Math.floor(Math.random() * 3) + 1;
+//let compNum = Math.floor(Math.random() * 3) + 1;
 
 // a func to allow the computer to participate
 function computerPlay (num) {
@@ -25,19 +25,8 @@ function computerPlay (num) {
 }
 
 
-function playerPlay () {
-    selection = prompt("Rock, Paper or Scissors: ");
-    selection = selection.toLowerCase(); //to make the selection case insensitive - will try to find the regex later
-
-    if (selection === 'r' | selection === 'rock' | selection === 'roc' | selection === 'rok'){
-        return "rock";
-    } else if (selection === 's' | selection === 'sissors' | selection === 'cissors' | selection === 'scissor' | selection === 'scissors'){
-        return "scissors";
-    } else if (selection === 'p' | selection === 'pape' | selection === 'paper' | selection === 'papep') {
-        return "paper";
-    } else {
-        return "invalid entry";
-    }
+function playerPlay(event){
+    return event.target.id;
 }
 
 function playRound(playerSelection, computerSelection) {
@@ -74,23 +63,23 @@ function playRound(playerSelection, computerSelection) {
 
 
 // function to play 5 rounds of the game;
-function game () {
-
-    for (let i = 0; i < 5; i++){
-        const playerSelection = playerPlay();
-        const computerSelection = computerPlay(compNum);
-        console.log(playRound(playerSelection, computerSelection));
-
+function game(event){
+        let playerSelection = playerPlay(event);
+        let compSelection = computerPlay(Math.floor(Math.random() * 3) + 1);
+    
+        console.log(playRound(playerSelection, compSelection));
         console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
+        if (playerScore === 5 || computerScore === 5) {
+        if (playerScore > computerScore){
+            alert('Congratulations! You win')
+        } else if (playerScore < computerScore) {
+            alert('Too Bad! You lose')
+        }
+        
+        playerScore = 0;
+        computerScore = 0; 
     }
 
-    if (playerScore > computerScore){
-        alert('Congratulations! You win')
-    } else if (playerScore < computerScore) {
-        alert('Too Bad! You lose')
-    } else {
-        alert("It's a draw!")
-    }
-}
+};
 
-game();
+

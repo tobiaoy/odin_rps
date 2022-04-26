@@ -6,9 +6,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
 
-    <script type = "text/javascript" src = 'game.js'></script>
+     <script type = "text/javascript" src = 'game.js'></script>
 </head>
 <body>
-    
+        <button id = 'rock' class = 'button'>ROCK</button>
+        <button id = 'paper' class = 'button'>PAPER</button>
+        <button id = 'scissors' class = 'button'>SCISSORS</button>
+
+<script>
+
+const buttons = document.querySelectorAll('.button');
+buttons.forEach(button => {
+     button.addEventListener('click', game);
+});
+
+</script>
 </body>
 </html>
