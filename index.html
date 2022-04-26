@@ -12,14 +12,18 @@
         <button id = 'rock' class = 'button'>ROCK</button>
         <button id = 'paper' class = 'button'>PAPER</button>
         <button id = 'scissors' class = 'button'>SCISSORS</button>
-
+        <p></p>
+        <div id = selection></div>
+        <p></p>
         <div id = score></div>
+        <p></p>
         <div id = result></div>
 
 <script>
 
 const score = document.querySelector('#score');
-const result = document.querySelector('#result')
+const result = document.querySelector('#result');
+const selection = document.querySelector('#selection');
 
 const buttons = document.querySelectorAll('.button');
 buttons.forEach(button => {

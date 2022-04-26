@@ -1,11 +1,9 @@
 let playerScore = 0;
 let computerScore = 0;
 
-// computer generates a random number between 1 and 3
-//let compNum = Math.floor(Math.random() * 3) + 1;
-
 // a func to allow the computer to participate
 function computerPlay (num) {
+    let selection;
     
     switch (num){
         case 1:
@@ -71,17 +69,16 @@ function game(event){
         let playerSelection = playerPlay(event);
         let compSelection = computerPlay(Math.floor(Math.random() * 3) + 1);
     
-        console.log(playRound(playerSelection, compSelection));
-        console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
+        //console.log(playRound(playerSelection, compSelection));
+        selection.textContent = playRound(playerSelection, compSelection);
+        //console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
         score.textContent = `Player Score is ${playerScore} and Computer Score is ${computerScore}.`
         result.textContent = " ";
 
         if (playerScore === 5 || computerScore === 5) {
             if (playerScore > computerScore){
-                //alert('Congratulations! You win')
-                result.textContent = 'Congratulations! You win';
+                result.textContent = 'Congratulations! You win the game';
             }  else if (playerScore < computerScore) {
-                //alert('Too Bad! You lose')
                 result.textContent = 'Too Bad! You lose';
             }
         
