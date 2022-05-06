@@ -5,19 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
-
-     <script type = "text/javascript" src = 'game.js'></script>
+    <link rel="stylesheet" type="text/css" href= 'style.css'>
+    <script src="https://kit.fontawesome.com/4403ffc201.js" crossorigin="anonymous"></script>
+    <script type = "text/javascript" src = 'game.js'></script>
 </head>
 <body>
-        <button id = 'rock' class = 'button'>ROCK</button>
-        <button id = 'paper' class = 'button'>PAPER</button>
-        <button id = 'scissors' class = 'button'>SCISSORS</button>
-        <p></p>
-        <div id = selection></div>
-        <p></p>
-        <div id = score></div>
-        <p></p>
-        <div id = result></div>
+     <div id = 'nav_bar'>
+          <h3>Rock  |  Paper  |  Scissors</h3>
+     </div>
+     <h4>First to 5 wins</h4>
+     <div id = 'game'>
+          <div id = 'user_input'>
+          <button id = 'rock' class = 'button'><i class="fa-solid fa-hand-back-fist fa-2x"></i></button>
+          <button id = 'paper' class = 'button'><i class="fa-solid fa-hand fa-2x"></i></button>
+          <button id = 'scissors' class = 'button'><i class="fa-solid fa-hand-scissors fa-2x"></i></button>
+          </div>
+          <p></p>
+          <div id = selection></div>
+          <p></p>
+          <div id = score></div>
+          <p></p>
+          <div id = result></div>
+     </div>
 
 <script>
 

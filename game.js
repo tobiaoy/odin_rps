@@ -72,14 +72,14 @@ function game(event){
         //console.log(playRound(playerSelection, compSelection));
         selection.textContent = playRound(playerSelection, compSelection);
         //console.log(`Player Score is ${playerScore} and Computer Score is ${computerScore}.`)
-        score.textContent = `Player Score is ${playerScore} and Computer Score is ${computerScore}.`
+        score.textContent = `Player Score: ${playerScore}\n Computer Score: ${computerScore}.`
         result.textContent = " ";
 
         if (playerScore === 5 || computerScore === 5) {
             if (playerScore > computerScore){
                 result.textContent = 'Congratulations! You win the game';
             }  else if (playerScore < computerScore) {
-                result.textContent = 'Too Bad! You lose';
+                result.textContent = 'Too Bad! You lose the game';
             }
         
             reset();
