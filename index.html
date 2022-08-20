@@ -6,39 +6,65 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" type="text/css" href= 'style.css'>
-    <script src="https://kit.fontawesome.com/4403ffc201.js" crossorigin="anonymous"></script>
-    <script type = "text/javascript" src = 'game.js'></script>
+    <!-- <script src="https://kit.fontawesome.com/4403ffc201.js" crossorigin="anonymous"></script> -->
+    <!-- <script type = "text/javascript" src = 'game.js'></script> -->
 </head>
 <body>
-     <div id = 'nav_bar'>
-          <h3>Rock  |  Paper  |  Scissors</h3>
+     <div id="title-block">
+          <p id="main-title">Rock Paper Scissors</p>
+          <p>Test Your Mettle</p>
+          <p>First to five, wins the game</p>
      </div>
-     <h4>First to 5 wins</h4>
-     <div id = 'game'>
-          <div id = 'user_input'>
-          <button id = 'rock' class = 'button'><i class="fa-solid fa-hand-back-fist fa-2x"></i></button>
-          <button id = 'paper' class = 'button'><i class="fa-solid fa-hand fa-2x"></i></button>
-          <button id = 'scissors' class = 'button'><i class="fa-solid fa-hand-scissors fa-2x"></i></button>
+
+     <div id="game-display">
+          <div id="player" class="participant">
+               <p class="play-title">Player</p>
+               <div id="player-icon" class="game-icon"></div>
           </div>
-          <p></p>
-          <div id = selection></div>
-          <p></p>
-          <div id = score></div>
-          <p></p>
-          <div id = result></div>
+
+          <div id="score-block">
+               <p id="player-score" class='score'>0</p>
+               <p>-</p>
+               <p id="draw-count" class='score'>0</p>
+               <p>-</p>
+               <p id="cpu-score" class='score'>0</p>
+          </div>
+
+          <div id="cpu" class="participant">
+               <p class="play-title">CPU</p>
+               <div id="cpu-icon" class="game-icon"></div>
+          </div>
      </div>
 
-<script>
+     <div id="game-controls">
+               <div class="control-icon">
+                    <div id="rock" class="game-icon" class="play-icon">
+                    </div>
+               </div>
 
-const score = document.querySelector('#score');
-const result = document.querySelector('#result');
-const selection = document.querySelector('#selection');
+               <div class="control-icon">
+                    <div id="paper" class="game-icon" class="play-icon">
+                    </div>
+               </div>
 
-const buttons = document.querySelectorAll('.button');
-buttons.forEach(button => {
-     button.addEventListener('click', game);
-});
+               <div class="control-icon">
+                    <div id="scissors" class="game-icon" class="play-icon">
+                    </div>
+               </div>
+     </div>
 
-</script>
+    <!-- Win Overlay -->
+    <div id = 'win-overlay'>
+     <div id = 'win-block'>
+         <p id = 'win-message'>someone wins the game</p>
+         <button id='reset-btn' class = 'win-btn'>Restart</button>
+     </div> 
+     </div>
+
+     <footer>
+          <div id="github">
+          </div>
+     </footer>
+
+<script type="text/javascript" src="script.js"></script>
 </body>
-</html>
