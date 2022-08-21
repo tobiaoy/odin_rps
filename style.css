@@ -5,7 +5,6 @@
     --sand: #E9E1DA;
     --light-brown: #D9BBB8;
     --brown: #C2ACB4;
-
     --rock: url(img/rock.jpeg);
     --paper: url(img/paper.jpeg);
     --scissors: url(img/scissors.jpeg);
@@ -21,7 +20,7 @@ body{
     display: flex;
     flex-direction: column;
     font-family: 'Open Sans', 'Work Sans', 'Roboto', 'Montserrat', 'Source Sans', 'Segoe UI', 'Inter', 'Quicksand', sans-serif;
-    gap: 6em;
+    gap: 5em;
     align-items: center;
     justify-content: center;
     background-color: var(--lightblue)
@@ -46,6 +45,16 @@ body{
     justify-content: center;
     width: 100%;
     padding: 1em 1em;
+}
+
+#play-update{
+    background-color: var(--darkblue);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.75rem;
+    color: var(--grey);
 }
 
 .participant{
@@ -98,30 +107,27 @@ body{
 
 .control-icon{
     border-radius: 50%;
-    height: 120px;
-    width: 120px;
+    max-height: 150px;
+    max-width: 150px;
     display: flex;
     justify-content: center;
     align-items: center;
+    background-color: var(--lightblue);
+    border-color: var(--sand);
 }
 
-#rock{
-    background-image: var(--rock);
-}
-
-#paper{
-    background-image: var(--paper);
-}
-
-#scissors{
-    background-image: var(--scissors);
-}
-
-.play-icon:hover, .play-icon:focus{
+#game-controls>button:hover, #game-controls>button:focus {
     border-style: solid;
     border-width: thin;
-    border-color: white; 
+    
     cursor: pointer;
+    padding: 3rem 3rem;
+}
+
+.control-icon > img{
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
 }
 
 
@@ -160,16 +166,14 @@ body{
       cursor: pointer;
   }
 
-  #github{
-    border-radius: 100%;
-    height: 50px;
-    width: 50px;
-    background-image: url(img/github-logo.jpg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
+
+  #footer > a{
+    text-decoration: none;
+    color: var(--light-brown);
   }
 
-  #github:hover, #github:focus{
-    cursor: pointer;
+  #footer{
+    font-size: 0.85rem;
+    flex: 1;
+    margin: 1em 1em;
   }

@@ -3,6 +3,8 @@ let cScore = 0;
 let dCount = 0;
 let gameOver = false;
 let cpuChoice;
+let roundRes;
+let roundWin;
 
 const cpuMove = () => {
     let  num = Math.floor((Math.random() * 3)+1);
@@ -20,72 +22,58 @@ const playerMove = (e) => {
     return e.target.id;
 }
 
-const winCheck = (() => {
+const winCheck = (mv1, mv2) => {
 
-    //rock beats scissors
-    const rockWin = (mv1, mv2) => {
-        if (mv1 === 'rock' && mv2 === 'scissors'){
-            return mv1;
-        } else if (mv2 === 'rock' && mv1 === 'scissors'){
-            return mv2;
-        } 
+//mv1 wins
+if (mv1==='rock' && mv2 ==='scissors'){
+    roundRes = `You win, rock beats scissors`;
+    return mv1;
+} else if (mv1==='paper' && mv2==='rock'){
+    roundRes = `You win, paper beats rock`;
+    return mv1;
+} else if (mv1==='scissors' && mv2==='paper'){
+    roundRes = `You win, scissors beats paper`;
+    return mv1;
+}
 
-    }   
+//mv2 wins
+if (mv2==='rock' && mv1 ==='scissors'){
+    roundRes = `You lose, rock beats scissors`;
+    return mv2;
+} else if (mv2==='paper' && mv1==='rock'){
+    roundRes = `You lose, paper beats rock`;
+    return mv2;
+} else if (mv2==='scissors' && mv1==='paper'){
+    roundRes = `You lose, scissors beats paper`;
+    return mv2;
+}
 
-    //scissors beats paper
-    const sciWin = (mv1, mv2) => {
-        if (mv1 === 'scissors' && mv2 === 'paper'){
-            return mv1;
-        } else if (mv1 === 'scissors' && mv2 === 'paper'){
-            return mv2;
-        }
-    }
+//draw
+if(mv1 === mv2){
+    roundRes = `It's a draw`
+    return;
+}
 
-    //paper beats rock
-    const paperWin = (mv1, mv2) => {
-        if (mv1 === 'paper' && mv2 === 'rock'){
-            return mv1;
-        } else if (mv1 === 'paper' && mv2 === 'rock'){
-            return mv2;
-        }
-    }
-
-
-    return {rockWin, sciWin, paperWin}
-})();
-
+}
 
 
 const game = (e) => {
     let player = playerMove(e);
     let cpu = cpuMove();
     cpuChoice = cpu;
-    let winner;
-    let draw = false;
-
-    if (player === 'paper' || cpu === 'paper'){
-        winner = winCheck.paperWin(player,cpu);
-        draw = false;
-    } else if (player === 'rock' || cpu === 'rock'){
-        winner = winCheck.rockWin(player,cpu);
-        draw = false;
-    } else if (player === 'scissors' || cpu === 'scissors'){
-        winner = winCheck.sciWin(player, cpu);
-        draw = false;
-    } else if (player === cpu){
-        winner = ''
-        draw = true;
-    }
-
+    let winner = winCheck(player, cpu);
+    
     if (winner === player){
-        pScore += 1;
+        pScore++;
     } else if (winner === cpu){
-        cScore += 1;
-    } else if(draw) {
-        dCount += 1;
+        cScore++;
+    } else if(winner === '' || winner === undefined) {
+        dCount++;
     }
 
+    roundWin = `You - ${pScore} : Ties - ${dCount} : CPU - ${cScore}`
     displayCon.updateScore();
+    displayCon.updateResult();
 
     //add a condition for when the score reaches 5
     if (pScore === 5 || cScore === 5){
@@ -106,18 +94,23 @@ const displayCon = (() => {
     const winOverlay = document.querySelector('#win-overlay');
     const winMessage = document.querySelector('#win-message');
     const resetBtn = document.querySelector('#reset-btn');
+    const roundResult = document.querySelector('#round-result');
+    const winScore = document.querySelector('#win-score');
 
     const updateScore = () => {
         playerScore.textContent = pScore;
         cpuScore.textContent = cScore;
         drawCount.textContent = dCount;
     }
+
+    const updateResult = () => {
+        roundResult.textContent = roundRes;
+        winScore.textContent = roundWin;
+    }
   
 
     rockControl.addEventListener('click', (e) => {
-        game(e);
-        playerIcon.style['background-image'] = 'url(img/rock.jpeg)';
-        cpuIcon.style['background-image'] = `url(img/${cpuChoice}.jpeg)`;
+        game(e);       
 
         if (gameOver){
             if (pScore > cScore){
@@ -127,13 +120,17 @@ const displayCon = (() => {
             }
             showWin();
         }
+        
+        if (!gameOver){
+        playerIcon.style['background-image'] = 'url(img/rock.png)';
+        cpuIcon.style['background-image'] = `url(img/${cpuChoice}.png)`;
+        } 
+        
     })
 
     paperControl.addEventListener('click', (e)=>{
         game(e);
-        playerIcon.style['background-image'] = 'url(img/paper.jpeg)';
-        cpuIcon.style['background-image'] = `url(img/${cpuChoice}.jpeg)`;
-
+        
         if (gameOver){
             if (pScore > cScore){
                 winMessage.textContent = 'The Player wins this time...'
@@ -142,21 +139,32 @@ const displayCon = (() => {
             }
             showWin();
         }
+        
+        if (!gameOver){
+        playerIcon.style['background-image'] = 'url(img/paper.png)';
+        cpuIcon.style['background-image'] = `url(img/${cpuChoice}.png)`;
+        } 
+        
     })
 
     scissorsControl.addEventListener('click', (e)=>{
         game(e);
-        playerIcon.style['background-image'] = 'url(img/scissors.jpeg)';
-        cpuIcon.style['background-image'] = `url(img/${cpuChoice}.jpeg)`;
-
+        
         if (gameOver){
             if (pScore > cScore){
-                winMessage.textContent = 'The Player wins this time...'
+                winMessage.textContent = `The Player wins this time...`
             } else if (cScore > pScore){
-                winMessage.textContent = 'The computer takes the win ;D'
+                winMessage.textContent = `The computer takes the win ;D `
             }
             showWin();
         }
+        
+        if (!gameOver){
+        playerIcon.style['background-image'] = 'url(img/scissors.png)';
+        cpuIcon.style['background-image'] = `url(img/${cpuChoice}.png)`;
+        }
+        
+
     })
 
     const showWin = () => {
@@ -168,17 +176,16 @@ const displayCon = (() => {
         cScore = 0;
         dCount = 0;
         gameOver = false;
+        roundRes = `It's a new game`
         winOverlay.style.display = 'none';
         updateScore();
+        updateResult();
     }
 
     resetBtn.addEventListener('click', reset);
 
-    return {updateScore}
+    return {updateScore, updateResult}
 
 })()
 
 
-/*
-
-*/

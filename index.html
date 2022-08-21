@@ -6,14 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" type="text/css" href= 'style.css'>
-    <!-- <script src="https://kit.fontawesome.com/4403ffc201.js" crossorigin="anonymous"></script> -->
+    <script src="https://kit.fontawesome.com/4403ffc201.js" crossorigin="anonymous"></script>
     <!-- <script type = "text/javascript" src = 'game.js'></script> -->
 </head>
 <body>
      <div id="title-block">
           <p id="main-title">Rock Paper Scissors</p>
-          <p>Test Your Mettle</p>
-          <p>First to five, wins the game</p>
+     </div>
+
+     <div id="play-update">
+          <p id="round-result">Test your mettle</p>
      </div>
 
      <div id="game-display">
@@ -37,33 +39,31 @@
      </div>
 
      <div id="game-controls">
-               <div class="control-icon">
-                    <div id="rock" class="game-icon" class="play-icon">
-                    </div>
-               </div>
+          <button class="control-icon">
+               <img src="img/rock.png" id="rock" alt="rock btn">
+          </button>
 
-               <div class="control-icon">
-                    <div id="paper" class="game-icon" class="play-icon">
-                    </div>
-               </div>
+          <button class="control-icon">
+               <img src="img/paper.png" id="paper" alt="paper btn">
+          </button>
 
-               <div class="control-icon">
-                    <div id="scissors" class="game-icon" class="play-icon">
-                    </div>
-               </div>
+          <button class="control-icon">
+               <img src="img/scissors.png" id="scissors" alt="scissors btn">
+          </button>
      </div>
 
     <!-- Win Overlay -->
     <div id = 'win-overlay'>
      <div id = 'win-block'>
          <p id = 'win-message'>someone wins the game</p>
+         <p>Final Score: </p>
+         <p id="win-score"></p>
          <button id='reset-btn' class = 'win-btn'>Restart</button>
      </div> 
      </div>
 
-     <footer>
-          <div id="github">
-          </div>
+     <footer id="footer">
+          <a href="https://github.com/tobiaoy"><i class='fa fa-github'></i>  Tobi Oyero</a>
      </footer>
 
 <script type="text/javascript" src="script.js"></script>
